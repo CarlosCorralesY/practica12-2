@@ -1,0 +1,11 @@
+CONST K = 20;
+INTEGER m, n, k, count;
+
+BEGIN
+    m := 1;
+    n := 1;
+    k := 1;
+    count := 0;
+    
+    WHILE count <= k DO
+END

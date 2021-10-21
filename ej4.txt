@@ -1,0 +1,16 @@
+const
+  m=7,
+  n=85;
+
+#flgmsdglsm .,,sdf
+
+FLOAT
+  x, y, z, q, r;
+
+PROCEDURE multiply;
+FLOAT a, b;
+BEGIN
+  a := x;
+  b := y;
+  z := 0;
+END;

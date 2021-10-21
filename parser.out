@@ -1,0 +1,1352 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    AND
+    BREAK
+    CATCH
+    CLASS
+    CORCH_FIN
+    CORCH_INI
+    ELSE
+    FALSE
+    FOR
+    FUNTION
+    IN
+    INPUT
+    IS
+    KEY_FIN
+    KEY_INI
+    MAIN
+    OPER_ACCES
+    OPER_MOD
+    OR
+    OUTPUT
+    PRINT
+    RETURN
+    TRUE
+    TRY
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> block
+Rule 2     block -> constDecl varDecl procDecl statement
+Rule 3     constDecl -> CONST constAssignmentList DOTCOM
+Rule 4     constDecl -> empty
+Rule 5     constAssignmentList -> ID OPER_ASSIG NUMBER
+Rule 6     constAssignmentList -> constAssignmentList COMA ID OPER_ASSIG NUMBER
+Rule 7     varDecl -> type identList DOTCOM
+Rule 8     type -> INTEGER
+Rule 9     type -> FLOAT
+Rule 10    type -> DOUBLE
+Rule 11    type -> STRING
+Rule 12    type -> CHARACTER
+Rule 13    type -> BOOLEAN
+Rule 14    varDecl -> empty
+Rule 15    identList -> ID
+Rule 16    identList -> identList COMA ID
+Rule 17    procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM
+Rule 18    procDecl -> empty
+Rule 19    statement -> ID UPDATE expression
+Rule 20    statement -> CALL ID
+Rule 21    statement -> BEGIN statementList END
+Rule 22    statement -> IF condition THEN statement
+Rule 23    statement -> WHILE condition DO statement
+Rule 24    statement -> empty
+Rule 25    statementList -> statement
+Rule 26    statementList -> statementList DOTCOM statement
+Rule 27    condition -> expression relation expression
+Rule 28    relation -> OPER_ASSIG
+Rule 29    relation -> OPER_NE
+Rule 30    relation -> OPER_MAYOR
+Rule 31    relation -> OPER_MENOR
+Rule 32    relation -> OPER_MAYORIGU
+Rule 33    relation -> OPER_MENORIGU
+Rule 34    relation -> OPER_DIFERENTE
+Rule 35    relation -> OPER_IDENTICO
+Rule 36    expression -> term
+Rule 37    expression -> addingOperator term
+Rule 38    expression -> expression addingOperator term
+Rule 39    addingOperator -> OPER_SUMA
+Rule 40    addingOperator -> OPER_DIF
+Rule 41    term -> factor
+Rule 42    term -> term multiplyingOperator factor
+Rule 43    multiplyingOperator -> OPER_MUL
+Rule 44    multiplyingOperator -> OPER_DIV
+Rule 45    factor -> ID
+Rule 46    factor -> NUMBER
+Rule 47    factor -> PAR_INI expression PAR_FIN
+Rule 48    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 
+BEGIN                : 21
+BOOLEAN              : 13
+BREAK                : 
+CALL                 : 20
+CATCH                : 
+CHARACTER            : 12
+CLASS                : 
+COMA                 : 6 16
+CONST                : 3
+CORCH_FIN            : 
+CORCH_INI            : 
+DO                   : 23
+DOTCOM               : 3 7 17 17 26
+DOUBLE               : 10
+ELSE                 : 
+END                  : 21
+FALSE                : 
+FLOAT                : 9
+FOR                  : 
+FUNTION              : 
+ID                   : 5 6 15 16 17 19 20 45
+IF                   : 22
+IN                   : 
+INPUT                : 
+INTEGER              : 8
+IS                   : 
+KEY_FIN              : 
+KEY_INI              : 
+MAIN                 : 
+NUMBER               : 5 6 46
+OPER_ACCES           : 
+OPER_ASSIG           : 5 6 28
+OPER_DIF             : 40
+OPER_DIFERENTE       : 34
+OPER_DIV             : 44
+OPER_IDENTICO        : 35
+OPER_MAYOR           : 30
+OPER_MAYORIGU        : 32
+OPER_MENOR           : 31
+OPER_MENORIGU        : 33
+OPER_MOD             : 
+OPER_MUL             : 43
+OPER_NE              : 29
+OPER_SUMA            : 39
+OR                   : 
+OUTPUT               : 
+PAR_FIN              : 47
+PAR_INI              : 47
+PRINT                : 
+PROCEDURE            : 17
+RETURN               : 
+STRING               : 11
+THEN                 : 22
+TRUE                 : 
+TRY                  : 
+UPDATE               : 19
+WHILE                : 23
+error                : 
+
+Nonterminals, with rules where they appear
+
+addingOperator       : 37 38
+block                : 1 17
+condition            : 22 23
+constAssignmentList  : 3 6
+constDecl            : 2
+empty                : 4 14 18 24
+expression           : 19 27 27 38 47
+factor               : 41 42
+identList            : 7 16
+multiplyingOperator  : 42
+procDecl             : 2 17
+program              : 0
+relation             : 27
+statement            : 2 22 23 25 26
+statementList        : 21 26
+term                 : 36 37 38 42
+type                 : 7
+varDecl              : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . block
+    (2) block -> . constDecl varDecl procDecl statement
+    (3) constDecl -> . CONST constAssignmentList DOTCOM
+    (4) constDecl -> . empty
+    (48) empty -> .
+
+    CONST           shift and go to state 4
+    INTEGER         reduce using rule 48 (empty -> .)
+    FLOAT           reduce using rule 48 (empty -> .)
+    DOUBLE          reduce using rule 48 (empty -> .)
+    STRING          reduce using rule 48 (empty -> .)
+    CHARACTER       reduce using rule 48 (empty -> .)
+    BOOLEAN         reduce using rule 48 (empty -> .)
+    PROCEDURE       reduce using rule 48 (empty -> .)
+    ID              reduce using rule 48 (empty -> .)
+    CALL            reduce using rule 48 (empty -> .)
+    BEGIN           reduce using rule 48 (empty -> .)
+    IF              reduce using rule 48 (empty -> .)
+    WHILE           reduce using rule 48 (empty -> .)
+    $end            reduce using rule 48 (empty -> .)
+
+    program                        shift and go to state 1
+    block                          shift and go to state 2
+    constDecl                      shift and go to state 3
+    empty                          shift and go to state 5
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> block .
+
+    $end            reduce using rule 1 (program -> block .)
+
+
+state 3
+
+    (2) block -> constDecl . varDecl procDecl statement
+    (7) varDecl -> . type identList DOTCOM
+    (14) varDecl -> . empty
+    (8) type -> . INTEGER
+    (9) type -> . FLOAT
+    (10) type -> . DOUBLE
+    (11) type -> . STRING
+    (12) type -> . CHARACTER
+    (13) type -> . BOOLEAN
+    (48) empty -> .
+
+    INTEGER         shift and go to state 9
+    FLOAT           shift and go to state 10
+    DOUBLE          shift and go to state 11
+    STRING          shift and go to state 12
+    CHARACTER       shift and go to state 13
+    BOOLEAN         shift and go to state 14
+    PROCEDURE       reduce using rule 48 (empty -> .)
+    ID              reduce using rule 48 (empty -> .)
+    CALL            reduce using rule 48 (empty -> .)
+    BEGIN           reduce using rule 48 (empty -> .)
+    IF              reduce using rule 48 (empty -> .)
+    WHILE           reduce using rule 48 (empty -> .)
+    $end            reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+
+    varDecl                        shift and go to state 6
+    type                           shift and go to state 7
+    empty                          shift and go to state 8
+
+state 4
+
+    (3) constDecl -> CONST . constAssignmentList DOTCOM
+    (5) constAssignmentList -> . ID OPER_ASSIG NUMBER
+    (6) constAssignmentList -> . constAssignmentList COMA ID OPER_ASSIG NUMBER
+
+    ID              shift and go to state 16
+
+    constAssignmentList            shift and go to state 15
+
+state 5
+
+    (4) constDecl -> empty .
+
+    INTEGER         reduce using rule 4 (constDecl -> empty .)
+    FLOAT           reduce using rule 4 (constDecl -> empty .)
+    DOUBLE          reduce using rule 4 (constDecl -> empty .)
+    STRING          reduce using rule 4 (constDecl -> empty .)
+    CHARACTER       reduce using rule 4 (constDecl -> empty .)
+    BOOLEAN         reduce using rule 4 (constDecl -> empty .)
+    PROCEDURE       reduce using rule 4 (constDecl -> empty .)
+    ID              reduce using rule 4 (constDecl -> empty .)
+    CALL            reduce using rule 4 (constDecl -> empty .)
+    BEGIN           reduce using rule 4 (constDecl -> empty .)
+    IF              reduce using rule 4 (constDecl -> empty .)
+    WHILE           reduce using rule 4 (constDecl -> empty .)
+    $end            reduce using rule 4 (constDecl -> empty .)
+    DOTCOM          reduce using rule 4 (constDecl -> empty .)
+
+
+state 6
+
+    (2) block -> constDecl varDecl . procDecl statement
+    (17) procDecl -> . procDecl PROCEDURE ID DOTCOM block DOTCOM
+    (18) procDecl -> . empty
+    (48) empty -> .
+
+    PROCEDURE       reduce using rule 48 (empty -> .)
+    ID              reduce using rule 48 (empty -> .)
+    CALL            reduce using rule 48 (empty -> .)
+    BEGIN           reduce using rule 48 (empty -> .)
+    IF              reduce using rule 48 (empty -> .)
+    WHILE           reduce using rule 48 (empty -> .)
+    $end            reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+
+    procDecl                       shift and go to state 17
+    empty                          shift and go to state 18
+
+state 7
+
+    (7) varDecl -> type . identList DOTCOM
+    (15) identList -> . ID
+    (16) identList -> . identList COMA ID
+
+    ID              shift and go to state 20
+
+    identList                      shift and go to state 19
+
+state 8
+
+    (14) varDecl -> empty .
+
+    PROCEDURE       reduce using rule 14 (varDecl -> empty .)
+    ID              reduce using rule 14 (varDecl -> empty .)
+    CALL            reduce using rule 14 (varDecl -> empty .)
+    BEGIN           reduce using rule 14 (varDecl -> empty .)
+    IF              reduce using rule 14 (varDecl -> empty .)
+    WHILE           reduce using rule 14 (varDecl -> empty .)
+    $end            reduce using rule 14 (varDecl -> empty .)
+    DOTCOM          reduce using rule 14 (varDecl -> empty .)
+
+
+state 9
+
+    (8) type -> INTEGER .
+
+    ID              reduce using rule 8 (type -> INTEGER .)
+
+
+state 10
+
+    (9) type -> FLOAT .
+
+    ID              reduce using rule 9 (type -> FLOAT .)
+
+
+state 11
+
+    (10) type -> DOUBLE .
+
+    ID              reduce using rule 10 (type -> DOUBLE .)
+
+
+state 12
+
+    (11) type -> STRING .
+
+    ID              reduce using rule 11 (type -> STRING .)
+
+
+state 13
+
+    (12) type -> CHARACTER .
+
+    ID              reduce using rule 12 (type -> CHARACTER .)
+
+
+state 14
+
+    (13) type -> BOOLEAN .
+
+    ID              reduce using rule 13 (type -> BOOLEAN .)
+
+
+state 15
+
+    (3) constDecl -> CONST constAssignmentList . DOTCOM
+    (6) constAssignmentList -> constAssignmentList . COMA ID OPER_ASSIG NUMBER
+
+    DOTCOM          shift and go to state 21
+    COMA            shift and go to state 22
+
+
+state 16
+
+    (5) constAssignmentList -> ID . OPER_ASSIG NUMBER
+
+    OPER_ASSIG      shift and go to state 23
+
+
+state 17
+
+    (2) block -> constDecl varDecl procDecl . statement
+    (17) procDecl -> procDecl . PROCEDURE ID DOTCOM block DOTCOM
+    (19) statement -> . ID UPDATE expression
+    (20) statement -> . CALL ID
+    (21) statement -> . BEGIN statementList END
+    (22) statement -> . IF condition THEN statement
+    (23) statement -> . WHILE condition DO statement
+    (24) statement -> . empty
+    (48) empty -> .
+
+    PROCEDURE       shift and go to state 25
+    ID              shift and go to state 26
+    CALL            shift and go to state 27
+    BEGIN           shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    $end            reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+
+    statement                      shift and go to state 24
+    empty                          shift and go to state 31
+
+state 18
+
+    (18) procDecl -> empty .
+
+    PROCEDURE       reduce using rule 18 (procDecl -> empty .)
+    ID              reduce using rule 18 (procDecl -> empty .)
+    CALL            reduce using rule 18 (procDecl -> empty .)
+    BEGIN           reduce using rule 18 (procDecl -> empty .)
+    IF              reduce using rule 18 (procDecl -> empty .)
+    WHILE           reduce using rule 18 (procDecl -> empty .)
+    $end            reduce using rule 18 (procDecl -> empty .)
+    DOTCOM          reduce using rule 18 (procDecl -> empty .)
+
+
+state 19
+
+    (7) varDecl -> type identList . DOTCOM
+    (16) identList -> identList . COMA ID
+
+    DOTCOM          shift and go to state 32
+    COMA            shift and go to state 33
+
+
+state 20
+
+    (15) identList -> ID .
+
+    DOTCOM          reduce using rule 15 (identList -> ID .)
+    COMA            reduce using rule 15 (identList -> ID .)
+
+
+state 21
+
+    (3) constDecl -> CONST constAssignmentList DOTCOM .
+
+    INTEGER         reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    FLOAT           reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    DOUBLE          reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    STRING          reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    CHARACTER       reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    BOOLEAN         reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    PROCEDURE       reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    ID              reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    CALL            reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    BEGIN           reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    IF              reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    WHILE           reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    $end            reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+    DOTCOM          reduce using rule 3 (constDecl -> CONST constAssignmentList DOTCOM .)
+
+
+state 22
+
+    (6) constAssignmentList -> constAssignmentList COMA . ID OPER_ASSIG NUMBER
+
+    ID              shift and go to state 34
+
+
+state 23
+
+    (5) constAssignmentList -> ID OPER_ASSIG . NUMBER
+
+    NUMBER          shift and go to state 35
+
+
+state 24
+
+    (2) block -> constDecl varDecl procDecl statement .
+
+    $end            reduce using rule 2 (block -> constDecl varDecl procDecl statement .)
+    DOTCOM          reduce using rule 2 (block -> constDecl varDecl procDecl statement .)
+
+
+state 25
+
+    (17) procDecl -> procDecl PROCEDURE . ID DOTCOM block DOTCOM
+
+    ID              shift and go to state 36
+
+
+state 26
+
+    (19) statement -> ID . UPDATE expression
+
+    UPDATE          shift and go to state 37
+
+
+state 27
+
+    (20) statement -> CALL . ID
+
+    ID              shift and go to state 38
+
+
+state 28
+
+    (21) statement -> BEGIN . statementList END
+    (25) statementList -> . statement
+    (26) statementList -> . statementList DOTCOM statement
+    (19) statement -> . ID UPDATE expression
+    (20) statement -> . CALL ID
+    (21) statement -> . BEGIN statementList END
+    (22) statement -> . IF condition THEN statement
+    (23) statement -> . WHILE condition DO statement
+    (24) statement -> . empty
+    (48) empty -> .
+
+    ID              shift and go to state 26
+    CALL            shift and go to state 27
+    BEGIN           shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    END             reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+
+    statementList                  shift and go to state 39
+    statement                      shift and go to state 40
+    empty                          shift and go to state 31
+
+state 29
+
+    (22) statement -> IF . condition THEN statement
+    (27) condition -> . expression relation expression
+    (36) expression -> . term
+    (37) expression -> . addingOperator term
+    (38) expression -> . expression addingOperator term
+    (41) term -> . factor
+    (42) term -> . term multiplyingOperator factor
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    condition                      shift and go to state 41
+    expression                     shift and go to state 42
+    term                           shift and go to state 43
+    addingOperator                 shift and go to state 44
+    factor                         shift and go to state 45
+
+state 30
+
+    (23) statement -> WHILE . condition DO statement
+    (27) condition -> . expression relation expression
+    (36) expression -> . term
+    (37) expression -> . addingOperator term
+    (38) expression -> . expression addingOperator term
+    (41) term -> . factor
+    (42) term -> . term multiplyingOperator factor
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    condition                      shift and go to state 51
+    expression                     shift and go to state 42
+    term                           shift and go to state 43
+    addingOperator                 shift and go to state 44
+    factor                         shift and go to state 45
+
+state 31
+
+    (24) statement -> empty .
+
+    $end            reduce using rule 24 (statement -> empty .)
+    DOTCOM          reduce using rule 24 (statement -> empty .)
+    END             reduce using rule 24 (statement -> empty .)
+
+
+state 32
+
+    (7) varDecl -> type identList DOTCOM .
+
+    PROCEDURE       reduce using rule 7 (varDecl -> type identList DOTCOM .)
+    ID              reduce using rule 7 (varDecl -> type identList DOTCOM .)
+    CALL            reduce using rule 7 (varDecl -> type identList DOTCOM .)
+    BEGIN           reduce using rule 7 (varDecl -> type identList DOTCOM .)
+    IF              reduce using rule 7 (varDecl -> type identList DOTCOM .)
+    WHILE           reduce using rule 7 (varDecl -> type identList DOTCOM .)
+    $end            reduce using rule 7 (varDecl -> type identList DOTCOM .)
+    DOTCOM          reduce using rule 7 (varDecl -> type identList DOTCOM .)
+
+
+state 33
+
+    (16) identList -> identList COMA . ID
+
+    ID              shift and go to state 52
+
+
+state 34
+
+    (6) constAssignmentList -> constAssignmentList COMA ID . OPER_ASSIG NUMBER
+
+    OPER_ASSIG      shift and go to state 53
+
+
+state 35
+
+    (5) constAssignmentList -> ID OPER_ASSIG NUMBER .
+
+    DOTCOM          reduce using rule 5 (constAssignmentList -> ID OPER_ASSIG NUMBER .)
+    COMA            reduce using rule 5 (constAssignmentList -> ID OPER_ASSIG NUMBER .)
+
+
+state 36
+
+    (17) procDecl -> procDecl PROCEDURE ID . DOTCOM block DOTCOM
+
+    DOTCOM          shift and go to state 54
+
+
+state 37
+
+    (19) statement -> ID UPDATE . expression
+    (36) expression -> . term
+    (37) expression -> . addingOperator term
+    (38) expression -> . expression addingOperator term
+    (41) term -> . factor
+    (42) term -> . term multiplyingOperator factor
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    expression                     shift and go to state 55
+    term                           shift and go to state 43
+    addingOperator                 shift and go to state 44
+    factor                         shift and go to state 45
+
+state 38
+
+    (20) statement -> CALL ID .
+
+    $end            reduce using rule 20 (statement -> CALL ID .)
+    DOTCOM          reduce using rule 20 (statement -> CALL ID .)
+    END             reduce using rule 20 (statement -> CALL ID .)
+
+
+state 39
+
+    (21) statement -> BEGIN statementList . END
+    (26) statementList -> statementList . DOTCOM statement
+
+    END             shift and go to state 56
+    DOTCOM          shift and go to state 57
+
+
+state 40
+
+    (25) statementList -> statement .
+
+    END             reduce using rule 25 (statementList -> statement .)
+    DOTCOM          reduce using rule 25 (statementList -> statement .)
+
+
+state 41
+
+    (22) statement -> IF condition . THEN statement
+
+    THEN            shift and go to state 58
+
+
+state 42
+
+    (27) condition -> expression . relation expression
+    (38) expression -> expression . addingOperator term
+    (28) relation -> . OPER_ASSIG
+    (29) relation -> . OPER_NE
+    (30) relation -> . OPER_MAYOR
+    (31) relation -> . OPER_MENOR
+    (32) relation -> . OPER_MAYORIGU
+    (33) relation -> . OPER_MENORIGU
+    (34) relation -> . OPER_DIFERENTE
+    (35) relation -> . OPER_IDENTICO
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+
+    OPER_ASSIG      shift and go to state 61
+    OPER_NE         shift and go to state 62
+    OPER_MAYOR      shift and go to state 63
+    OPER_MENOR      shift and go to state 64
+    OPER_MAYORIGU   shift and go to state 65
+    OPER_MENORIGU   shift and go to state 66
+    OPER_DIFERENTE  shift and go to state 67
+    OPER_IDENTICO   shift and go to state 68
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+
+    relation                       shift and go to state 59
+    addingOperator                 shift and go to state 60
+
+state 43
+
+    (36) expression -> term .
+    (42) term -> term . multiplyingOperator factor
+    (43) multiplyingOperator -> . OPER_MUL
+    (44) multiplyingOperator -> . OPER_DIV
+
+    OPER_ASSIG      reduce using rule 36 (expression -> term .)
+    OPER_NE         reduce using rule 36 (expression -> term .)
+    OPER_MAYOR      reduce using rule 36 (expression -> term .)
+    OPER_MENOR      reduce using rule 36 (expression -> term .)
+    OPER_MAYORIGU   reduce using rule 36 (expression -> term .)
+    OPER_MENORIGU   reduce using rule 36 (expression -> term .)
+    OPER_DIFERENTE  reduce using rule 36 (expression -> term .)
+    OPER_IDENTICO   reduce using rule 36 (expression -> term .)
+    OPER_SUMA       reduce using rule 36 (expression -> term .)
+    OPER_DIF        reduce using rule 36 (expression -> term .)
+    $end            reduce using rule 36 (expression -> term .)
+    DOTCOM          reduce using rule 36 (expression -> term .)
+    END             reduce using rule 36 (expression -> term .)
+    PAR_FIN         reduce using rule 36 (expression -> term .)
+    THEN            reduce using rule 36 (expression -> term .)
+    DO              reduce using rule 36 (expression -> term .)
+    OPER_MUL        shift and go to state 70
+    OPER_DIV        shift and go to state 71
+
+    multiplyingOperator            shift and go to state 69
+
+state 44
+
+    (37) expression -> addingOperator . term
+    (41) term -> . factor
+    (42) term -> . term multiplyingOperator factor
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    term                           shift and go to state 72
+    factor                         shift and go to state 45
+
+state 45
+
+    (41) term -> factor .
+
+    OPER_MUL        reduce using rule 41 (term -> factor .)
+    OPER_DIV        reduce using rule 41 (term -> factor .)
+    OPER_ASSIG      reduce using rule 41 (term -> factor .)
+    OPER_NE         reduce using rule 41 (term -> factor .)
+    OPER_MAYOR      reduce using rule 41 (term -> factor .)
+    OPER_MENOR      reduce using rule 41 (term -> factor .)
+    OPER_MAYORIGU   reduce using rule 41 (term -> factor .)
+    OPER_MENORIGU   reduce using rule 41 (term -> factor .)
+    OPER_DIFERENTE  reduce using rule 41 (term -> factor .)
+    OPER_IDENTICO   reduce using rule 41 (term -> factor .)
+    OPER_SUMA       reduce using rule 41 (term -> factor .)
+    OPER_DIF        reduce using rule 41 (term -> factor .)
+    $end            reduce using rule 41 (term -> factor .)
+    DOTCOM          reduce using rule 41 (term -> factor .)
+    END             reduce using rule 41 (term -> factor .)
+    PAR_FIN         reduce using rule 41 (term -> factor .)
+    THEN            reduce using rule 41 (term -> factor .)
+    DO              reduce using rule 41 (term -> factor .)
+
+
+state 46
+
+    (39) addingOperator -> OPER_SUMA .
+
+    ID              reduce using rule 39 (addingOperator -> OPER_SUMA .)
+    NUMBER          reduce using rule 39 (addingOperator -> OPER_SUMA .)
+    PAR_INI         reduce using rule 39 (addingOperator -> OPER_SUMA .)
+
+
+state 47
+
+    (40) addingOperator -> OPER_DIF .
+
+    ID              reduce using rule 40 (addingOperator -> OPER_DIF .)
+    NUMBER          reduce using rule 40 (addingOperator -> OPER_DIF .)
+    PAR_INI         reduce using rule 40 (addingOperator -> OPER_DIF .)
+
+
+state 48
+
+    (45) factor -> ID .
+
+    OPER_MUL        reduce using rule 45 (factor -> ID .)
+    OPER_DIV        reduce using rule 45 (factor -> ID .)
+    OPER_ASSIG      reduce using rule 45 (factor -> ID .)
+    OPER_NE         reduce using rule 45 (factor -> ID .)
+    OPER_MAYOR      reduce using rule 45 (factor -> ID .)
+    OPER_MENOR      reduce using rule 45 (factor -> ID .)
+    OPER_MAYORIGU   reduce using rule 45 (factor -> ID .)
+    OPER_MENORIGU   reduce using rule 45 (factor -> ID .)
+    OPER_DIFERENTE  reduce using rule 45 (factor -> ID .)
+    OPER_IDENTICO   reduce using rule 45 (factor -> ID .)
+    OPER_SUMA       reduce using rule 45 (factor -> ID .)
+    OPER_DIF        reduce using rule 45 (factor -> ID .)
+    $end            reduce using rule 45 (factor -> ID .)
+    DOTCOM          reduce using rule 45 (factor -> ID .)
+    END             reduce using rule 45 (factor -> ID .)
+    PAR_FIN         reduce using rule 45 (factor -> ID .)
+    THEN            reduce using rule 45 (factor -> ID .)
+    DO              reduce using rule 45 (factor -> ID .)
+
+
+state 49
+
+    (46) factor -> NUMBER .
+
+    OPER_MUL        reduce using rule 46 (factor -> NUMBER .)
+    OPER_DIV        reduce using rule 46 (factor -> NUMBER .)
+    OPER_ASSIG      reduce using rule 46 (factor -> NUMBER .)
+    OPER_NE         reduce using rule 46 (factor -> NUMBER .)
+    OPER_MAYOR      reduce using rule 46 (factor -> NUMBER .)
+    OPER_MENOR      reduce using rule 46 (factor -> NUMBER .)
+    OPER_MAYORIGU   reduce using rule 46 (factor -> NUMBER .)
+    OPER_MENORIGU   reduce using rule 46 (factor -> NUMBER .)
+    OPER_DIFERENTE  reduce using rule 46 (factor -> NUMBER .)
+    OPER_IDENTICO   reduce using rule 46 (factor -> NUMBER .)
+    OPER_SUMA       reduce using rule 46 (factor -> NUMBER .)
+    OPER_DIF        reduce using rule 46 (factor -> NUMBER .)
+    $end            reduce using rule 46 (factor -> NUMBER .)
+    DOTCOM          reduce using rule 46 (factor -> NUMBER .)
+    END             reduce using rule 46 (factor -> NUMBER .)
+    PAR_FIN         reduce using rule 46 (factor -> NUMBER .)
+    THEN            reduce using rule 46 (factor -> NUMBER .)
+    DO              reduce using rule 46 (factor -> NUMBER .)
+
+
+state 50
+
+    (47) factor -> PAR_INI . expression PAR_FIN
+    (36) expression -> . term
+    (37) expression -> . addingOperator term
+    (38) expression -> . expression addingOperator term
+    (41) term -> . factor
+    (42) term -> . term multiplyingOperator factor
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    expression                     shift and go to state 73
+    term                           shift and go to state 43
+    addingOperator                 shift and go to state 44
+    factor                         shift and go to state 45
+
+state 51
+
+    (23) statement -> WHILE condition . DO statement
+
+    DO              shift and go to state 74
+
+
+state 52
+
+    (16) identList -> identList COMA ID .
+
+    DOTCOM          reduce using rule 16 (identList -> identList COMA ID .)
+    COMA            reduce using rule 16 (identList -> identList COMA ID .)
+
+
+state 53
+
+    (6) constAssignmentList -> constAssignmentList COMA ID OPER_ASSIG . NUMBER
+
+    NUMBER          shift and go to state 75
+
+
+state 54
+
+    (17) procDecl -> procDecl PROCEDURE ID DOTCOM . block DOTCOM
+    (2) block -> . constDecl varDecl procDecl statement
+    (3) constDecl -> . CONST constAssignmentList DOTCOM
+    (4) constDecl -> . empty
+    (48) empty -> .
+
+    CONST           shift and go to state 4
+    INTEGER         reduce using rule 48 (empty -> .)
+    FLOAT           reduce using rule 48 (empty -> .)
+    DOUBLE          reduce using rule 48 (empty -> .)
+    STRING          reduce using rule 48 (empty -> .)
+    CHARACTER       reduce using rule 48 (empty -> .)
+    BOOLEAN         reduce using rule 48 (empty -> .)
+    PROCEDURE       reduce using rule 48 (empty -> .)
+    ID              reduce using rule 48 (empty -> .)
+    CALL            reduce using rule 48 (empty -> .)
+    BEGIN           reduce using rule 48 (empty -> .)
+    IF              reduce using rule 48 (empty -> .)
+    WHILE           reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+
+    block                          shift and go to state 76
+    constDecl                      shift and go to state 3
+    empty                          shift and go to state 5
+
+state 55
+
+    (19) statement -> ID UPDATE expression .
+    (38) expression -> expression . addingOperator term
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+
+    $end            reduce using rule 19 (statement -> ID UPDATE expression .)
+    DOTCOM          reduce using rule 19 (statement -> ID UPDATE expression .)
+    END             reduce using rule 19 (statement -> ID UPDATE expression .)
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+
+    addingOperator                 shift and go to state 60
+
+state 56
+
+    (21) statement -> BEGIN statementList END .
+
+    $end            reduce using rule 21 (statement -> BEGIN statementList END .)
+    DOTCOM          reduce using rule 21 (statement -> BEGIN statementList END .)
+    END             reduce using rule 21 (statement -> BEGIN statementList END .)
+
+
+state 57
+
+    (26) statementList -> statementList DOTCOM . statement
+    (19) statement -> . ID UPDATE expression
+    (20) statement -> . CALL ID
+    (21) statement -> . BEGIN statementList END
+    (22) statement -> . IF condition THEN statement
+    (23) statement -> . WHILE condition DO statement
+    (24) statement -> . empty
+    (48) empty -> .
+
+    ID              shift and go to state 26
+    CALL            shift and go to state 27
+    BEGIN           shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    END             reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+
+    statement                      shift and go to state 77
+    empty                          shift and go to state 31
+
+state 58
+
+    (22) statement -> IF condition THEN . statement
+    (19) statement -> . ID UPDATE expression
+    (20) statement -> . CALL ID
+    (21) statement -> . BEGIN statementList END
+    (22) statement -> . IF condition THEN statement
+    (23) statement -> . WHILE condition DO statement
+    (24) statement -> . empty
+    (48) empty -> .
+
+    ID              shift and go to state 26
+    CALL            shift and go to state 27
+    BEGIN           shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    $end            reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+    END             reduce using rule 48 (empty -> .)
+
+    statement                      shift and go to state 78
+    empty                          shift and go to state 31
+
+state 59
+
+    (27) condition -> expression relation . expression
+    (36) expression -> . term
+    (37) expression -> . addingOperator term
+    (38) expression -> . expression addingOperator term
+    (41) term -> . factor
+    (42) term -> . term multiplyingOperator factor
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    expression                     shift and go to state 79
+    term                           shift and go to state 43
+    addingOperator                 shift and go to state 44
+    factor                         shift and go to state 45
+
+state 60
+
+    (38) expression -> expression addingOperator . term
+    (41) term -> . factor
+    (42) term -> . term multiplyingOperator factor
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    term                           shift and go to state 80
+    factor                         shift and go to state 45
+
+state 61
+
+    (28) relation -> OPER_ASSIG .
+
+    OPER_SUMA       reduce using rule 28 (relation -> OPER_ASSIG .)
+    OPER_DIF        reduce using rule 28 (relation -> OPER_ASSIG .)
+    ID              reduce using rule 28 (relation -> OPER_ASSIG .)
+    NUMBER          reduce using rule 28 (relation -> OPER_ASSIG .)
+    PAR_INI         reduce using rule 28 (relation -> OPER_ASSIG .)
+
+
+state 62
+
+    (29) relation -> OPER_NE .
+
+    OPER_SUMA       reduce using rule 29 (relation -> OPER_NE .)
+    OPER_DIF        reduce using rule 29 (relation -> OPER_NE .)
+    ID              reduce using rule 29 (relation -> OPER_NE .)
+    NUMBER          reduce using rule 29 (relation -> OPER_NE .)
+    PAR_INI         reduce using rule 29 (relation -> OPER_NE .)
+
+
+state 63
+
+    (30) relation -> OPER_MAYOR .
+
+    OPER_SUMA       reduce using rule 30 (relation -> OPER_MAYOR .)
+    OPER_DIF        reduce using rule 30 (relation -> OPER_MAYOR .)
+    ID              reduce using rule 30 (relation -> OPER_MAYOR .)
+    NUMBER          reduce using rule 30 (relation -> OPER_MAYOR .)
+    PAR_INI         reduce using rule 30 (relation -> OPER_MAYOR .)
+
+
+state 64
+
+    (31) relation -> OPER_MENOR .
+
+    OPER_SUMA       reduce using rule 31 (relation -> OPER_MENOR .)
+    OPER_DIF        reduce using rule 31 (relation -> OPER_MENOR .)
+    ID              reduce using rule 31 (relation -> OPER_MENOR .)
+    NUMBER          reduce using rule 31 (relation -> OPER_MENOR .)
+    PAR_INI         reduce using rule 31 (relation -> OPER_MENOR .)
+
+
+state 65
+
+    (32) relation -> OPER_MAYORIGU .
+
+    OPER_SUMA       reduce using rule 32 (relation -> OPER_MAYORIGU .)
+    OPER_DIF        reduce using rule 32 (relation -> OPER_MAYORIGU .)
+    ID              reduce using rule 32 (relation -> OPER_MAYORIGU .)
+    NUMBER          reduce using rule 32 (relation -> OPER_MAYORIGU .)
+    PAR_INI         reduce using rule 32 (relation -> OPER_MAYORIGU .)
+
+
+state 66
+
+    (33) relation -> OPER_MENORIGU .
+
+    OPER_SUMA       reduce using rule 33 (relation -> OPER_MENORIGU .)
+    OPER_DIF        reduce using rule 33 (relation -> OPER_MENORIGU .)
+    ID              reduce using rule 33 (relation -> OPER_MENORIGU .)
+    NUMBER          reduce using rule 33 (relation -> OPER_MENORIGU .)
+    PAR_INI         reduce using rule 33 (relation -> OPER_MENORIGU .)
+
+
+state 67
+
+    (34) relation -> OPER_DIFERENTE .
+
+    OPER_SUMA       reduce using rule 34 (relation -> OPER_DIFERENTE .)
+    OPER_DIF        reduce using rule 34 (relation -> OPER_DIFERENTE .)
+    ID              reduce using rule 34 (relation -> OPER_DIFERENTE .)
+    NUMBER          reduce using rule 34 (relation -> OPER_DIFERENTE .)
+    PAR_INI         reduce using rule 34 (relation -> OPER_DIFERENTE .)
+
+
+state 68
+
+    (35) relation -> OPER_IDENTICO .
+
+    OPER_SUMA       reduce using rule 35 (relation -> OPER_IDENTICO .)
+    OPER_DIF        reduce using rule 35 (relation -> OPER_IDENTICO .)
+    ID              reduce using rule 35 (relation -> OPER_IDENTICO .)
+    NUMBER          reduce using rule 35 (relation -> OPER_IDENTICO .)
+    PAR_INI         reduce using rule 35 (relation -> OPER_IDENTICO .)
+
+
+state 69
+
+    (42) term -> term multiplyingOperator . factor
+    (45) factor -> . ID
+    (46) factor -> . NUMBER
+    (47) factor -> . PAR_INI expression PAR_FIN
+
+    ID              shift and go to state 48
+    NUMBER          shift and go to state 49
+    PAR_INI         shift and go to state 50
+
+    factor                         shift and go to state 81
+
+state 70
+
+    (43) multiplyingOperator -> OPER_MUL .
+
+    ID              reduce using rule 43 (multiplyingOperator -> OPER_MUL .)
+    NUMBER          reduce using rule 43 (multiplyingOperator -> OPER_MUL .)
+    PAR_INI         reduce using rule 43 (multiplyingOperator -> OPER_MUL .)
+
+
+state 71
+
+    (44) multiplyingOperator -> OPER_DIV .
+
+    ID              reduce using rule 44 (multiplyingOperator -> OPER_DIV .)
+    NUMBER          reduce using rule 44 (multiplyingOperator -> OPER_DIV .)
+    PAR_INI         reduce using rule 44 (multiplyingOperator -> OPER_DIV .)
+
+
+state 72
+
+    (37) expression -> addingOperator term .
+    (42) term -> term . multiplyingOperator factor
+    (43) multiplyingOperator -> . OPER_MUL
+    (44) multiplyingOperator -> . OPER_DIV
+
+    OPER_ASSIG      reduce using rule 37 (expression -> addingOperator term .)
+    OPER_NE         reduce using rule 37 (expression -> addingOperator term .)
+    OPER_MAYOR      reduce using rule 37 (expression -> addingOperator term .)
+    OPER_MENOR      reduce using rule 37 (expression -> addingOperator term .)
+    OPER_MAYORIGU   reduce using rule 37 (expression -> addingOperator term .)
+    OPER_MENORIGU   reduce using rule 37 (expression -> addingOperator term .)
+    OPER_DIFERENTE  reduce using rule 37 (expression -> addingOperator term .)
+    OPER_IDENTICO   reduce using rule 37 (expression -> addingOperator term .)
+    OPER_SUMA       reduce using rule 37 (expression -> addingOperator term .)
+    OPER_DIF        reduce using rule 37 (expression -> addingOperator term .)
+    $end            reduce using rule 37 (expression -> addingOperator term .)
+    DOTCOM          reduce using rule 37 (expression -> addingOperator term .)
+    END             reduce using rule 37 (expression -> addingOperator term .)
+    PAR_FIN         reduce using rule 37 (expression -> addingOperator term .)
+    THEN            reduce using rule 37 (expression -> addingOperator term .)
+    DO              reduce using rule 37 (expression -> addingOperator term .)
+    OPER_MUL        shift and go to state 70
+    OPER_DIV        shift and go to state 71
+
+    multiplyingOperator            shift and go to state 69
+
+state 73
+
+    (47) factor -> PAR_INI expression . PAR_FIN
+    (38) expression -> expression . addingOperator term
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+
+    PAR_FIN         shift and go to state 82
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+
+    addingOperator                 shift and go to state 60
+
+state 74
+
+    (23) statement -> WHILE condition DO . statement
+    (19) statement -> . ID UPDATE expression
+    (20) statement -> . CALL ID
+    (21) statement -> . BEGIN statementList END
+    (22) statement -> . IF condition THEN statement
+    (23) statement -> . WHILE condition DO statement
+    (24) statement -> . empty
+    (48) empty -> .
+
+    ID              shift and go to state 26
+    CALL            shift and go to state 27
+    BEGIN           shift and go to state 28
+    IF              shift and go to state 29
+    WHILE           shift and go to state 30
+    $end            reduce using rule 48 (empty -> .)
+    DOTCOM          reduce using rule 48 (empty -> .)
+    END             reduce using rule 48 (empty -> .)
+
+    statement                      shift and go to state 83
+    empty                          shift and go to state 31
+
+state 75
+
+    (6) constAssignmentList -> constAssignmentList COMA ID OPER_ASSIG NUMBER .
+
+    DOTCOM          reduce using rule 6 (constAssignmentList -> constAssignmentList COMA ID OPER_ASSIG NUMBER .)
+    COMA            reduce using rule 6 (constAssignmentList -> constAssignmentList COMA ID OPER_ASSIG NUMBER .)
+
+
+state 76
+
+    (17) procDecl -> procDecl PROCEDURE ID DOTCOM block . DOTCOM
+
+    DOTCOM          shift and go to state 84
+
+
+state 77
+
+    (26) statementList -> statementList DOTCOM statement .
+
+    END             reduce using rule 26 (statementList -> statementList DOTCOM statement .)
+    DOTCOM          reduce using rule 26 (statementList -> statementList DOTCOM statement .)
+
+
+state 78
+
+    (22) statement -> IF condition THEN statement .
+
+    $end            reduce using rule 22 (statement -> IF condition THEN statement .)
+    DOTCOM          reduce using rule 22 (statement -> IF condition THEN statement .)
+    END             reduce using rule 22 (statement -> IF condition THEN statement .)
+
+
+state 79
+
+    (27) condition -> expression relation expression .
+    (38) expression -> expression . addingOperator term
+    (39) addingOperator -> . OPER_SUMA
+    (40) addingOperator -> . OPER_DIF
+
+    THEN            reduce using rule 27 (condition -> expression relation expression .)
+    DO              reduce using rule 27 (condition -> expression relation expression .)
+    OPER_SUMA       shift and go to state 46
+    OPER_DIF        shift and go to state 47
+
+    addingOperator                 shift and go to state 60
+
+state 80
+
+    (38) expression -> expression addingOperator term .
+    (42) term -> term . multiplyingOperator factor
+    (43) multiplyingOperator -> . OPER_MUL
+    (44) multiplyingOperator -> . OPER_DIV
+
+    OPER_ASSIG      reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_NE         reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_MAYOR      reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_MENOR      reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_MAYORIGU   reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_MENORIGU   reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_DIFERENTE  reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_IDENTICO   reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_SUMA       reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_DIF        reduce using rule 38 (expression -> expression addingOperator term .)
+    $end            reduce using rule 38 (expression -> expression addingOperator term .)
+    DOTCOM          reduce using rule 38 (expression -> expression addingOperator term .)
+    END             reduce using rule 38 (expression -> expression addingOperator term .)
+    PAR_FIN         reduce using rule 38 (expression -> expression addingOperator term .)
+    THEN            reduce using rule 38 (expression -> expression addingOperator term .)
+    DO              reduce using rule 38 (expression -> expression addingOperator term .)
+    OPER_MUL        shift and go to state 70
+    OPER_DIV        shift and go to state 71
+
+    multiplyingOperator            shift and go to state 69
+
+state 81
+
+    (42) term -> term multiplyingOperator factor .
+
+    OPER_MUL        reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_DIV        reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_ASSIG      reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_NE         reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_MAYOR      reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_MENOR      reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_MAYORIGU   reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_MENORIGU   reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_DIFERENTE  reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_IDENTICO   reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_SUMA       reduce using rule 42 (term -> term multiplyingOperator factor .)
+    OPER_DIF        reduce using rule 42 (term -> term multiplyingOperator factor .)
+    $end            reduce using rule 42 (term -> term multiplyingOperator factor .)
+    DOTCOM          reduce using rule 42 (term -> term multiplyingOperator factor .)
+    END             reduce using rule 42 (term -> term multiplyingOperator factor .)
+    PAR_FIN         reduce using rule 42 (term -> term multiplyingOperator factor .)
+    THEN            reduce using rule 42 (term -> term multiplyingOperator factor .)
+    DO              reduce using rule 42 (term -> term multiplyingOperator factor .)
+
+
+state 82
+
+    (47) factor -> PAR_INI expression PAR_FIN .
+
+    OPER_MUL        reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_DIV        reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_ASSIG      reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_NE         reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_MAYOR      reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_MENOR      reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_MAYORIGU   reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_MENORIGU   reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_DIFERENTE  reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_IDENTICO   reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_SUMA       reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    OPER_DIF        reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    $end            reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    DOTCOM          reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    END             reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    PAR_FIN         reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    THEN            reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+    DO              reduce using rule 47 (factor -> PAR_INI expression PAR_FIN .)
+
+
+state 83
+
+    (23) statement -> WHILE condition DO statement .
+
+    $end            reduce using rule 23 (statement -> WHILE condition DO statement .)
+    DOTCOM          reduce using rule 23 (statement -> WHILE condition DO statement .)
+    END             reduce using rule 23 (statement -> WHILE condition DO statement .)
+
+
+state 84
+
+    (17) procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .
+
+    PROCEDURE       reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+    ID              reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+    CALL            reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+    BEGIN           reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+    IF              reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+    WHILE           reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+    $end            reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+    DOTCOM          reduce using rule 17 (procDecl -> procDecl PROCEDURE ID DOTCOM block DOTCOM .)
+
